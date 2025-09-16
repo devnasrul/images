@@ -1,1 +1,17 @@
-<center>this is the html file
+<div id="gallery"></div>
+<script>
+  fetch("https://api.github.com/repos/USERNAME/REPONAME/contents/images")
+    .then(r => r.json())
+    .then(files => {
+      const gallery = document.getElementById("gallery");
+      files.forEach(file => {
+        if (file.type === "file" && file.name.match(/\.(jpg|png|gif|jpeg|webp|avif)$/i)) {
+          const el = document.createElement("img");
+          el.src = file.download_url;
+          el.style.width = "200px";
+          el.style.margin = "5px";
+          gallery.appendChild(el);
+        }
+      });
+    });
+</script>
