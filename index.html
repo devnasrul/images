@@ -1,7 +1,7 @@
 these are all images:2
 <div id="gallery"></div>
 <script>
-  fetch("https://api.github.com/repos/devnasrul/images/contents/data")
+  fetch("https://api.github.com/repos/devnasrul/images/contents/data?ref=main")
     .then(r => r.json())
     .then(files => {
       const gallery = document.getElementById("gallery");
